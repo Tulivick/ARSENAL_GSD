@@ -30,12 +30,18 @@ java -jar Arsenal_GSD_GUI.jar
 
 Fill in the fields:
 * Git Login
-  * username: GitHub username;
-  * password: GitHub password;
-*
+  * User: GitHub username;
+  * Pwd: GitHub password;
+* Target Repository
+  * Owner: repository owner of your GitHub target repository;
+  * Repo: name of your GitHub target repository;
+  * Time Intl: data time interval in days;
+* Watson Natural Language Understanding
+  * Username: WNLU credentials' username
+  * Password: WNLU credentials' password
+* Analysed Data: select the evidences you wish to consider.
 
-
-Note that our GUI was created just to provide a way to use Arsenal 
+Note that our GUI was created just to provide an example of Arsenal-GSD application, so it is very simple interface. It does not validate fields neither organize nodes and edges when you generate one of the graphs (Initial Relations, Relations or Trust), they are all stacked.
 
 ### ArsenalGSD
 
