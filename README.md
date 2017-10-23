@@ -2,10 +2,10 @@
 **A**utomatic t**R**ust e**S**timator based on s**EN**timent an**AL**ysis for **GSD**
 
 # Folders
-We have four folder in this repository:
+We have four folders in this repository:
 
 * Arsenal GSD GUI: this project contains a simple graphical user interface for ARSENAL-GSD, where you can run it or explore the source code in order to see how it works;
-* ArsenalGSD: this project contais the ARSENAL-GSD framework, developed to use with GitHub;
+* ArsenalGSD: this project contains the ARSENAL-GSD framework, developed to use with GitHub;
 * Libs: jar files needed to run both projects, Arsenal GSD GUI and ArsenalGSD, except SentiStrength.
 * SentStrength_Data_Sept2011: Modified SentiStrength Data that is used by ARSENAL-GSD
 
@@ -15,37 +15,37 @@ We have four folder in this repository:
 
 In order to run Arsenal GSD GUI and/or ArsenalGSD, you will need:
 
-* SentiStrength Java Version: we could not add it to the Libs folder; however, you can obtain the corresponding .jar file from [SentiStrength website](http://sentistrength.wlv.ac.uk/). You can obtain it buying one license or, if it's for research purpose only ask a free copy throught your academic email.
-* Credentials for Watson Natural Language Understanding (WNLU): if you already have an bluemix account with valid credentials you can use them. If you don't have a bluemix account, a free trial account can be obtained [here](https://www.ibm.com/watson/services/natural-language-understanding/). Create your account following the steps informed in the website than configure your region, organization and space in order to create a credential for Watson Natural Language Understanding. After create your credential go to "Service Credentials" and click on "View credentials" under Actions to see your username and password.
+* SentiStrength Java Version: we could not add it to the Libs folder; however, you can obtain the corresponding .jar file from [SentiStrength website](http://sentistrength.wlv.ac.uk/). You can obtain it by buying one license or, if it will be used for research purpose only, ask for a free copy through your academic e-mail.
+* Credentials for Watson Natural Language Understanding (WNLU): if you already have a bluemix account with valid credentials, you can use them. If you don't have a bluemix account, a free trial account can be obtained [here](https://www.ibm.com/watson/services/natural-language-understanding/). Create your account following the steps informed in the website, and then configure your region, organization and space in order to create a credential for Watson Natural Language Understanding. After creating your credentials, go to "Service Credentials" and click on "View credentials" under Actions to see your username and password.
 
 ## Setup
 
 ### Arsenal GSD GUI
 
-`ARSENAL_GSD/Arsenal GSD GUI/dist/` folder has everything you need. Just add SentiStrength `.jar` to the `lib` folder and place `SentStrength_Data_Sept2011` in the working directory. All done, just run:
+`ARSENAL_GSD/Arsenal GSD GUI/dist/` folder has everything you need to run GUI. Just add SentiStrength `.jar` to the `lib` folder and place `SentStrength_Data_Sept2011` in the working directory. All done, just run:
 
 ```bash
 java -jar Arsenal_GSD_GUI.jar
 ```
 
-Fill in the fields:
+In the application window, fill in the fields:
 * Git Login
-  * User: GitHub username;
-  * Pwd: GitHub password;
+  * User: your GitHub username;
+  * Pwd: your GitHub password;
 * Target Repository
-  * Owner: repository owner of your GitHub target repository;
+  * Owner: username of the repository owner of your GitHub target repository;
   * Repo: name of your GitHub target repository;
   * Time Intl: data time interval in days;
 * Watson Natural Language Understanding
   * Username: WNLU credentials' username
   * Password: WNLU credentials' password
-* Analysed Data: select the evidences you wish to consider.
+* Analysed Data: select the evidences you wish to be considered in the estimations.
 
-Note that our GUI was created just to provide an example of Arsenal-GSD application, so it is very simple interface. It does not validate fields neither organize nodes and edges when you generate one of the graphs (Initial Relations, Relations or Trust), they are all stacked.
+Press one of the buttons to generate the corresponding graph (Initial Relations, Relations or Trust). Note that our GUI was created just to provide an example of Arsenal-GSD's application, so it is very simple. It does not validate entry fields neither organize nodes and edges when graphs are generated -- they will be stacked one upon the other. Thus, to visualize the resulting graph, use your mouse to reposition its nodes and edges.
 
 ### ArsenalGSD
 
-Add all ARSENAL-GSD dependencies to your project then you can call it like the following example:
+Add all ARSENAL-GSD dependencies to your project. Then, you can call it like the following example:
 
 ```java
 TrustFramework tf = new TrustFramework(); // instantiate it
