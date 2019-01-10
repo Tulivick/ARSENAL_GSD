@@ -1,6 +1,5 @@
 package tfgui;
 
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -31,7 +30,7 @@ import trustframework.graph.jgrapht.TFGraphImpFactory;
  *
  * @author Guilherme
  */
-public class ConfigurationFrame extends javax.swing.JFrame {
+public class ConfigurationFrame extends JFrame {
 
     private TrustFramework tf;
     
@@ -187,9 +186,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Watson Natural Language Understanding"));
 
-        jLabel4.setText("Username:");
+        jLabel4.setText("Apikey:");
 
-        jLabel5.setText("Password:");
+        jLabel5.setText("Url:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -232,9 +231,9 @@ public class ConfigurationFrame extends javax.swing.JFrame {
 
         jCheckBox4.setText("Assigns");
 
-        jCheckBox5.setText("Colaboration");
+        jCheckBox5.setText("Collaboration");
 
-        jCheckBox6.setText("Comunality");
+        jCheckBox6.setText("Communality");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -366,7 +365,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             tf.setRepository(repoField.getText());
             tf.setTimeInterval((int) timeInteval.getValue());
             loadEvidenceExtractors();
-            JDialog frame = new JDialog(this,"Grafo de confiança");
+            JDialog frame = new JDialog(this,"Initial relationship graph");
             JGraph jGraph = new JGraph(new JGraphModelAdapter<>(((TFGraphImp) tf.getRelationsGraph()).getGraph()));
             frame.getContentPane().add(jGraph);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -386,7 +385,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             tf.setRepository(repoField.getText());
             tf.setTimeInterval((int) timeInteval.getValue());
             loadEvidenceExtractors();
-            JDialog frame = new JDialog(this,"Grafo de confiança");
+            JDialog frame = new JDialog(this,"Relationship graph");
             tf.getTrustGraph();
             JGraph jGraph = new JGraph(new JGraphModelAdapter<>(((TFGraphImp) tf.getRelationsGraph()).getGraph()));
             frame.getContentPane().add(jGraph);
@@ -407,7 +406,7 @@ public class ConfigurationFrame extends javax.swing.JFrame {
             tf.setRepository(repoField.getText());
             tf.setTimeInterval((int) timeInteval.getValue());
             loadEvidenceExtractors();
-            JDialog frame = new JDialog(this,"Grafo de confiança");
+            JDialog frame = new JDialog(this,"Graph of trust");
             JGraph jGraph = new JGraph(new JGraphModelAdapter<>(((TFGraphImp) tf.getTrustGraph()).getGraph()));
             frame.getContentPane().add(jGraph);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -428,20 +427,20 @@ public class ConfigurationFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfigurationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(ConfigurationFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfigurationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(ConfigurationFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfigurationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfigurationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.getLogger(ConfigurationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(ConfigurationFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
