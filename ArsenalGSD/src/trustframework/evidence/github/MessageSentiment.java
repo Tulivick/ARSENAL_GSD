@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package trustframework.evidence.github;
+import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
+
 
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
@@ -18,6 +20,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import org.eclipse.egit.github.core.PullRequest;
 import org.eclipse.egit.github.core.User;
 import trustframework.data.github.GitComment;
@@ -40,12 +44,18 @@ public class MessageSentiment implements EvidenceAnalyser {
     private final NaturalLanguageUnderstanding service;
     private final Features features;
     
-    public MessageSentiment(double weigth, String sentiDataFolder, String wnluUsername, String wnluPassword) {
+    public MessageSentiment(double weigth, String sentiDataFolder, String wnluApi, String wnluUrl) {
         this.weigth = weigth;
         sentiStrength = new SentiStrength();
         String initializationString[] = {"sentidata", sentiDataFolder, "sentenceCombineTot", "paragraphCombineTot", "trinary"};
         sentiStrength.initialise(initializationString);
-        service = new NaturalLanguageUnderstanding(NaturalLanguageUnderstanding.VERSION_DATE_2017_02_27, wnluUsername, wnluPassword);
+       // in the constructor, letting the SDK manage the IAM token
+        IamOptions options = new IamOptions.Builder()
+                .apiKey(wnluApi)
+                .build();
+         service = new NaturalLanguageUnderstanding("2017-02-27", options);
+         service.setEndPoint(wnluUrl);
+        service.setIamCredentials(options);
         features = new Features.Builder().entities(new EntitiesOptions.Builder().build()).build();
     }
 
